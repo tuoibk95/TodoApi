@@ -34,6 +34,7 @@ app.MapPut("/todoitems/{id}", async (int id, Todo inputTodo, TodoDb db) =>
     if (todo is null) return Results.NotFound();
 
     todo.Name = inputTodo.Name;
+    todo.Age = inputTodo.Age;
     todo.IsComplete = inputTodo.IsComplete;
 
     await db.SaveChangesAsync();
@@ -59,6 +60,7 @@ class Todo
 {
     public int Id { get; set; }
     public string? Name { get; set; }
+    public int Age { get; set; }
     public bool IsComplete { get; set; }
 }
 
